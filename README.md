@@ -88,6 +88,23 @@ python manage.py createsuperuser
   
 Note that the following mutation is requiring superuser token authentication
 "deleteStudent"
+  
+#### Token  
+Pass the access token in header as following:  
+```json
+{
+   "Authorization": "JWT {{TOKEN}}"
+}
+```
+#### Uploading images using postman
+* Creating student with picture
+* Choose form-data in body
+* Choose bulk-edit and put the following  
+```
+operations:{"query": "mutation($picture: Upload!){createStudent(name: \"Magdy\", age: 20, grade: GRADE_THREE, picture: $picture){success}}","variables": {"picture": null}}
+map:{ "0": ["variables.picture"]}
+```
+* Choose Key-Value edit and put value for key "0" as file and upload picture of student
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
